@@ -1,7 +1,19 @@
+use rand::Rng;
 use warp::{http::Response, Filter, Rejection};
 
 struct Randnum {
     num: i32,
+}
+
+impl Randnum {
+    fn new() -> Self {
+        let random = {
+            let mut rng = rand::thread_rng();
+            rng.gen_range(1..=1000)
+        };
+
+        Self { num: random }
+    }
 }
 
 impl warp::Reply for Randnum {
@@ -11,7 +23,8 @@ impl warp::Reply for Randnum {
 }
 
 async fn get_random() -> Result<Randnum, Rejection> {
-    Ok(Randnum { num: 245 })
+    let random_number = Randnum::new();
+    Ok(random_number)
 }
 
 #[tokio::main]

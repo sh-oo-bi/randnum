@@ -520,6 +520,7 @@ dependencies = [
 name = "randnum"
 version = "0.1.0"
 dependencies = [
+ "rand",
  "tokio",
  "warp",
 ]
