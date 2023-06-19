@@ -1,6 +1,8 @@
 use rand::Rng;
-use warp::{http::Response, Filter, Rejection};
+use serde::Serialize;
+use warp::{Filter, Rejection};
 
+#[derive(Debug, Serialize)]
 struct Randnum {
     num: i32,
 }
@@ -16,15 +18,10 @@ impl Randnum {
     }
 }
 
-impl warp::Reply for Randnum {
-    fn into_response(self) -> warp::reply::Response {
-        Response::new(format!("random number is : {}", self.num.to_string()).into())
-    }
-}
-
-async fn get_random() -> Result<Randnum, Rejection> {
+async fn get_random() -> Result<impl warp::Reply, Rejection> {
     let random_number = Randnum::new();
-    Ok(random_number)
+
+    Ok(warp::reply::json(&random_number))
 }
 
 #[tokio::main]
