@@ -6,5 +6,5 @@ Running the server by writing the following command in your terminal
 ```sh
 cargo run
 ```
-open your browser and type the following link in your address bar
+<p>open your browser and type the following link in your address bar</p>
 http://172.0.0.1:1337/randnum
