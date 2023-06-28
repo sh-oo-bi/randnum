@@ -4,7 +4,7 @@ A simple web app developed using warp (a web framework in Rust) for generating r
 Running the server by writing the following command in your terminal
 
 ```sh
->cargo run
+> `cargo run`
 ```
 <p>open your browser and type the following link in your address bar</p>
 <p>http://172.0.0.1:1337/randnum</p>
